@@ -20,7 +20,7 @@ switch (recebeCodigo) {
     for (let codigo of armazenaLista) {
       encontrouProduto = codigo.indexOf(recebeCodigo);
       if (encontrouProduto != -1) {
-        mensagem = `Lista:${codigo[0]} ${codigo[1]} ${codigo[2]}`;
+        mensagem = `Lista:${codigo[0]} ${codigo[1]} ${codigo[2]} ${codigo[3]} ${codigo[4]} ${codigo[5]}`;
       } else {
         mensagem = "Código não encontrado!";
       }
@@ -32,6 +32,9 @@ switch (recebeCodigo) {
     let produto = prompt("Digite o produto");
     let incluiLista = [codigo, produto];
     armazenaLista.push(incluiLista);
-    mensagem = "Lista incluída com sucesso:${codigo} ${produto}";
+    mensagem = "Lista incluída com sucesso!";
     break;
 }
+
+console.log(mensagem);
+console.log(armazenaLista);
