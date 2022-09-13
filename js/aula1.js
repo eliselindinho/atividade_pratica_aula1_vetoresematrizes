@@ -14,19 +14,6 @@ let recebeCodigo = prompt(
 let mensagem = "";
 
 switch (recebeCodigo) {
-  case "consultar":
-    recebeCodigo = prompt("Digite o código do produto que deseja encontrar: ");
-    let encontrouProduto = " ";
-    for (let codigo of armazenaLista) {
-      encontrouProduto = codigo.indexOf(recebeCodigo);
-      if (encontrouProduto != -1) {
-        mensagem = `Lista:${codigo[0]} ${codigo[1]} ${codigo[2]} ${codigo[3]} ${codigo[4]} ${codigo[5]}`;
-      } else {
-        mensagem = "Código não encontrado!";
-      }
-    }
-    break;
-
   case "incluir":
     let codigo = prompt("Digite o código");
     let produto = prompt("Digite o produto");
@@ -34,6 +21,32 @@ switch (recebeCodigo) {
     armazenaLista.push(incluiLista);
     mensagem = "Lista incluída com sucesso!";
     break;
+
+  case "consultar":
+    let recebeCodigoProduto = prompt(
+      "Digite o código do produto que deseja encontrar: "
+    );
+    let encontrouProduto = " ";
+    for (let codigo of armazenaLista) {
+      encontrouProduto = codigo[0].indexOf(recebeCodigoProduto);
+      if (encontrouProduto != -1) {
+        mensagem = "O produto escolhido foi: " + codigo[1];
+        break;
+      }
+    }
+    if (encontrouProduto == -1) {
+      let comando = prompt(
+        "Sem cadastro, código não encontrado! Deseja incluir? Sim ou Não?"
+      ).toLowerCase();
+      if (comando == "sim") {
+        let codigo = prompt("Digite o código");
+        let produto = prompt("Digite o produto");
+        let incluiLista = [codigo, produto];
+        armazenaLista.push(incluiLista);
+        mensagem = "Lista incluída com sucesso!";
+        break;
+      }
+    }
 }
 
 console.log(mensagem);
